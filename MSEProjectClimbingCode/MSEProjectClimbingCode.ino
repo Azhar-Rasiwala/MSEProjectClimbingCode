@@ -1,6 +1,6 @@
 const int frontMotorA = 15;
 const int frontMotorB = 23;
-const int push = 27; //PB1
+const int push = 27;
 const int interval = 1000;
 unsigned long intervalStartTime;
 unsigned long currentTime;
@@ -19,15 +19,18 @@ void setup() {
 
 void loop()
 {
+  ledcWrite(1, dForwardSpeed);
+  ledcWrite(2, 0);
   currentTime = millis();
 
-  if (digitalRead(push) == true) {//PB1 is pressed
-    startMotion(); //spool starts spinning
+  if (digitalRead(push) == true) {
+    startMotion();
+
     intervalStartTime = currentTime;
   }
 
   if (currentTime - intervalStartTime >= interval) {
-    stopMotion(); //stop spinning spool
+    stopMotion();
   }
 
 }
@@ -37,7 +40,6 @@ void startMotion() {
   ledcWrite(2, 0);
   motorRun = true;
 }
-
 void stopMotion() {
   ledcWrite(5, 0);
   ledcWrite(6, 0);
