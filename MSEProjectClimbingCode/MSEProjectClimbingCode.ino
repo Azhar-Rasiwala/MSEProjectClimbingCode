@@ -6,32 +6,41 @@ unsigned long intervalStartTime;
 unsigned long currentTime;
 boolean motorRun = false;
 double dForwardSpeed;
+int iButtonState;
+int iLastButtonState = HIGH;
 
 void setup() {
   ledcAttachPin(frontMotorA, 5);
   ledcAttachPin(frontMotorB, 6);
   ledcSetup(5, 300, 8);       // only value found to work for now. Can be changed from 300
   ledcSetup(6, 300, 8);
-  
+
   dForwardSpeed = 250;        //250 is max speed (determined through testing
   pinMode(push, INPUT_PULLUP);
-  
+
 }
 
 void loop()
-{ 
+{
   currentTime = millis();
 
-  if (digitalRead(push) == true) {
+  int iButtonValue = digitalRead(push);
+  if (iButtonValue != iLastButtonState) {
     startMotion();
 
     intervalStartTime = currentTime;
   }
 
   if (currentTime - intervalStartTime >= interval) {
-    stopMotion();
+    if (iButtonValue != iButtonState)
+    {
+      if(iButtonState == LOW)
+      {
+      stopMotion();
+      }
+    }
   }
-  
+
 }
 
 void startMotion() {
