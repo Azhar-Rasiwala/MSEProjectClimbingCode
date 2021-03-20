@@ -21,13 +21,13 @@ void loop()
 {
   currentTime = millis();
 
-  if (digitalRead(push) == true) {
-    startMotion();
+  if (digitalRead(push) == true) {//PB1 is pressed
+    startMotion(); //spool starts spinning
     intervalStartTime = currentTime;
   }
 
   if (currentTime - intervalStartTime >= interval) {
-    stopMotion();
+    stopMotion(); //stop spinning spool
   }
 
 }
