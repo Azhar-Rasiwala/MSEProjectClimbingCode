@@ -12,15 +12,15 @@ void setup() {
   ledcAttachPin(frontMotorB, 6);
   ledcSetup(5, 300, 8);       // only value found to work for now. Can be changed from 300
   ledcSetup(6, 300, 8);
-
+  
   dForwardSpeed = 250;        //250 is max speed (determined through testing
   pinMode(push, INPUT_PULLUP);
 }
 
 void loop()
 {
-  ledcWrite(1, dForwardSpeed);
-  ledcWrite(2, 0);
+  startMotion();
+  /*
   currentTime = millis();
 
   if (digitalRead(push) == true) {
@@ -32,7 +32,8 @@ void loop()
   if (currentTime - intervalStartTime >= interval) {
     stopMotion();
   }
-
+  */
+  
 }
 
 void startMotion() {
