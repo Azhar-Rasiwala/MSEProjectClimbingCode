@@ -1,7 +1,7 @@
 const int frontMotorA = 15;
 const int frontMotorB = 23;
 const int push = 27;
-const int interval = 1000;
+const int interval = 15000;
 unsigned long intervalStartTime;
 unsigned long currentTime;
 boolean motorRun = false;
@@ -15,12 +15,11 @@ void setup() {
   
   dForwardSpeed = 250;        //250 is max speed (determined through testing
   pinMode(push, INPUT_PULLUP);
+  
 }
 
 void loop()
-{
-  startMotion();
-  /*
+{ 
   currentTime = millis();
 
   if (digitalRead(push) == true) {
@@ -32,13 +31,12 @@ void loop()
   if (currentTime - intervalStartTime >= interval) {
     stopMotion();
   }
-  */
   
 }
 
 void startMotion() {
-  ledcWrite(1, dForwardSpeed);
-  ledcWrite(2, 0);
+  ledcWrite(5, dForwardSpeed);
+  ledcWrite(6, 0);
   motorRun = true;
 }
 void stopMotion() {
