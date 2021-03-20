@@ -1,6 +1,6 @@
 const int frontMotorA = 15;
 const int frontMotorB = 23;
-const int push = 27;
+const int push = 27; //PB1
 const int interval = 1000;
 unsigned long intervalStartTime;
 unsigned long currentTime;
