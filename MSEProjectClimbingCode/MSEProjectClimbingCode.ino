@@ -37,6 +37,7 @@ void startMotion() {
   ledcWrite(2, 0);
   motorRun = true;
 }
+
 void stopMotion() {
   ledcWrite(5, 0);
   ledcWrite(6, 0);
