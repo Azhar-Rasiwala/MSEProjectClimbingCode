@@ -27,16 +27,15 @@ void loop()
   int iButtonValue = digitalRead(push);
   if (iButtonValue != iLastButtonState) {
     startMotion();
-
     intervalStartTime = currentTime;
   }
 
   if (currentTime - intervalStartTime >= interval) {
     if (iButtonValue != iButtonState)
     {
-      if(iButtonState == LOW)
+      if (iButtonState == LOW)
       {
-      stopMotion();
+        stopMotion();
       }
     }
   }
