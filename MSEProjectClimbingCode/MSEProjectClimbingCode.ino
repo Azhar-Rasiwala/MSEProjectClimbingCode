@@ -29,17 +29,6 @@ void loop()
     startMotion();
     intervalStartTime = currentTime;
   }
-
-  if (currentTime - intervalStartTime >= interval) {
-    if (iButtonValue != iButtonState)
-    {
-      if (iButtonState == LOW)
-      {
-        stopMotion();
-      }
-    }
-  }
-
 }
 
 void startMotion() {
